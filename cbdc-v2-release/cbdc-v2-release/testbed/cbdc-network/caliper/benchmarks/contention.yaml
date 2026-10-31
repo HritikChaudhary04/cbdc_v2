@@ -1,0 +1,13 @@
+# Step 8f: contention pilot at a fixed 50 TPS. Run with STOP_AT_SATURATION=0 (conflicts are expected to reduce valid throughput).
+test:
+  name: cbdc-contention
+  description: Transfer at 50 TPS with shrinking account sets and Zipf-skewed senders
+  workers: { number: 4 }
+  rounds:
+    - { label: warmup-50tps, txDuration: 30, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: uniform-N10000, txDuration: 60, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: uniform-N1000, txDuration: 60, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 1000, distribution: uniform } } }
+    - { label: uniform-N100, txDuration: 60, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 100, distribution: uniform } } }
+    - { label: zipf-s0.8, txDuration: 60, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: zipf, zipfS: 0.8 } } }
+    - { label: zipf-s1.0, txDuration: 60, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: zipf, zipfS: 1.0 } } }
+    - { label: zipf-s1.2, txDuration: 60, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: zipf, zipfS: 1.2 } } }

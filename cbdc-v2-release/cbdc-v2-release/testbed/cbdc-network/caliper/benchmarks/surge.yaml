@@ -1,0 +1,20 @@
+# Step 8g (surge, spec G2): offered load steps 40 -> 130 -> 40 TPS, 30 s each, in ONE round (Caliper composite-rate).
+# 130 TPS is close to the laptop client's limit (~145 TPS) and below the B = 50 network capacity (>= 150 TPS).
+test:
+  name: cbdc-surge
+  description: Load surge 40 -> 130 -> 40 TPS
+  workers: { number: 4 }
+  rounds:
+    - { label: warmup-50tps, txDuration: 30, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - label: surge-40-130-40
+      txDuration: 90
+      rateControl:
+        type: composite-rate
+        opts:
+          weights: [1, 1, 1]
+          rateControllers:
+            - { type: fixed-rate, opts: { tps: 40 } }
+            - { type: fixed-rate, opts: { tps: 130 } }
+            - { type: fixed-rate, opts: { tps: 40 } }
+          logChange: true
+      workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } }

@@ -1,0 +1,14 @@
+# Step 8d: load sweep for a block-size configuration (run after 08_rebuild.sh B TAU). 60 s rounds; stops at saturation.
+test:
+  name: cbdc-sweep-blocks
+  description: Fixed-rate Transfer sweep for one block-parameter setting
+  workers: { number: 4 }
+  rounds:
+    - { label: warmup-50tps, txDuration: 30, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-50tps, txDuration: 60, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-100tps, txDuration: 60, rateControl: { type: fixed-rate, opts: { tps: 100 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-150tps, txDuration: 60, rateControl: { type: fixed-rate, opts: { tps: 150 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-200tps, txDuration: 60, rateControl: { type: fixed-rate, opts: { tps: 200 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-250tps, txDuration: 60, rateControl: { type: fixed-rate, opts: { tps: 250 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-300tps, txDuration: 60, rateControl: { type: fixed-rate, opts: { tps: 300 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-400tps, txDuration: 60, rateControl: { type: fixed-rate, opts: { tps: 400 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }

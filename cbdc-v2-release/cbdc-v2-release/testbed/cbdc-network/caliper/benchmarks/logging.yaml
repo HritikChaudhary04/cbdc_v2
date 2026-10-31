@@ -1,0 +1,8 @@
+# Step 8h: one measured round at 100 TPS; run three times by scripts/11_logging.sh (log level INFO, WARNING, INFO).
+test:
+  name: cbdc-logging
+  description: Transfer at 100 TPS for the logging-overhead comparison
+  workers: { number: 4 }
+  rounds:
+    - { label: warmup-50tps, txDuration: 30, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-100tps, txDuration: 90, rateControl: { type: fixed-rate, opts: { tps: 100 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }

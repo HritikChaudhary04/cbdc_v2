@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this material, please cite the paper and this record."
+title: "Confirmation time in a permissioned retail CBDC: code, testbed and data"
+authors:
+  - family-names: Chaudhary
+    given-names: Hritik
+    affiliation: "Kathmandu University"
+version: "2.0"
+date-released: 2026-10-30
+license: [MIT, CC-BY-4.0]

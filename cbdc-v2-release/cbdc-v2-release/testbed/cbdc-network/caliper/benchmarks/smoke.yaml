@@ -1,0 +1,19 @@
+# Smoke benchmark: short rounds to check that Caliper reaches its target send rate and transactions commit.
+test:
+  name: cbdc-smoke
+  description: Short fixed-rate rounds of Transfer (uniform accounts) and Noop
+  workers:
+    number: 4
+  rounds:
+    - label: transfer-20tps
+      txDuration: 30
+      rateControl: { type: fixed-rate, opts: { tps: 20 } }
+      workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } }
+    - label: transfer-50tps
+      txDuration: 30
+      rateControl: { type: fixed-rate, opts: { tps: 50 } }
+      workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } }
+    - label: noop-50tps
+      txDuration: 30
+      rateControl: { type: fixed-rate, opts: { tps: 50 } }
+      workload: { module: workload/noop.js }

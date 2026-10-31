@@ -1,0 +1,12 @@
+{
+  "title": "Confirmation time in a permissioned retail CBDC: code, testbed and data",
+  "upload_type": "software",
+  "description": "Code, testbed and data for the paper 'Confirmation time in a permissioned retail CBDC: a queueing model validated on a Hyperledger Fabric testbed'. The record contains the analytical queueing model and SimPy simulator of a Hyperledger Fabric pipeline (endorsement quorum, block formation, Raft ordering, commitment), matrix-analytic extensions for bursty arrivals and phase-type service, the five-institution Fabric 2.5.14 testbed with its build, benchmark and campaign scripts, the analysis scripts, and the measured results behind every table and figure. Start with reproduce_paper.ipynb, which rebuilds the paper's tables and figures from the saved results. data/raw/campaign_data.tar.gz holds the raw block-level measurements of all reportable rounds, and data/raw/EF_results.tar.gz the validator-failure and surge rounds, and data/raw/B10C_results.tar.gz the B = 10 drift check.",
+  "creators": [
+    {"name": "Chaudhary, Hritik", "affiliation": "Kathmandu University"}
+  ],
+  "license": "MIT",
+  "keywords": ["central bank digital currency", "queueing theory", "Hyperledger Fabric", "matrix-analytic methods", "performance evaluation"],
+  "version": "2.0",
+  "access_right": "open"
+}

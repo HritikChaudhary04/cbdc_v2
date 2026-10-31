@@ -1,0 +1,9 @@
+# Step 8g: two-of-five peer failure. Clients use the gateways of Inst1-3 only (Inst4 and Inst5 will be stopped).
+# Run through scripts/10_failure.sh, which stops peer0.inst4 and peer0.inst5 during the 150 s round and restarts them.
+test:
+  name: cbdc-failure
+  description: Transfer at 50 TPS while 2 of the 5 peers fail and recover (policy OutOf(3 of 5))
+  workers: { number: 4 }
+  rounds:
+    - { label: warmup-50tps, txDuration: 30, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform, orgs: [Inst1MSP, Inst2MSP, Inst3MSP] } } }
+    - { label: failure-50tps-150s, txDuration: 150, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform, orgs: [Inst1MSP, Inst2MSP, Inst3MSP] } } }

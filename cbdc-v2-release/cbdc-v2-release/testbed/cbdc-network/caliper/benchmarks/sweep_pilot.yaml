@@ -1,0 +1,40 @@
+# Step 8b pilot load sweep (laptop, one repetition): a short warm-up, then Transfer at rising fixed rates, 120 s each.
+# 07_benchmark.sh stops after the first round that saturates (steady throughput < 95% of target or send rate short).
+test:
+  name: cbdc-sweep-pilot
+  description: Fixed-rate load sweep of Transfer (uniform over 10000 accounts) to find saturation
+  workers:
+    number: 4
+  rounds:
+    - label: warmup-50tps
+      txDuration: 30
+      rateControl: { type: fixed-rate, opts: { tps: 50 } }
+      workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } }
+    - label: transfer-25tps
+      txDuration: 120
+      rateControl: { type: fixed-rate, opts: { tps: 25 } }
+      workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } }
+    - label: transfer-50tps
+      txDuration: 120
+      rateControl: { type: fixed-rate, opts: { tps: 50 } }
+      workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } }
+    - label: transfer-100tps
+      txDuration: 120
+      rateControl: { type: fixed-rate, opts: { tps: 100 } }
+      workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } }
+    - label: transfer-150tps
+      txDuration: 120
+      rateControl: { type: fixed-rate, opts: { tps: 150 } }
+      workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } }
+    - label: transfer-200tps
+      txDuration: 120
+      rateControl: { type: fixed-rate, opts: { tps: 200 } }
+      workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } }
+    - label: transfer-250tps
+      txDuration: 120
+      rateControl: { type: fixed-rate, opts: { tps: 250 } }
+      workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } }
+    - label: transfer-300tps
+      txDuration: 120
+      rateControl: { type: fixed-rate, opts: { tps: 300 } }
+      workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } }

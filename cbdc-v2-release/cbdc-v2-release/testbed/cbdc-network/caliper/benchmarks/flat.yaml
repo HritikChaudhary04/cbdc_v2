@@ -1,0 +1,12 @@
+test:
+  name: cbdc-flatness
+  description: Replicated flatness check of stage times below the knee
+  workers: { number: 4 }
+  rounds:
+    - { label: warmup-50tps, txDuration: 30, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-25tps, txDuration: 120, rateControl: { type: fixed-rate, opts: { tps: 25 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-50tps, txDuration: 120, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-75tps, txDuration: 120, rateControl: { type: fixed-rate, opts: { tps: 75 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-100tps, txDuration: 120, rateControl: { type: fixed-rate, opts: { tps: 100 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-125tps, txDuration: 120, rateControl: { type: fixed-rate, opts: { tps: 125 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-150tps, txDuration: 120, rateControl: { type: fixed-rate, opts: { tps: 150 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }

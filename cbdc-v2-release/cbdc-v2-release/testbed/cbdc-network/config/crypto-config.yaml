@@ -1,0 +1,45 @@
+# crypto-config.yaml : identities for the CBDC prototype (input to cryptogen)
+# 1 ordering organisation (central bank) with 3 Raft orderers; 5 institution organisations with 1 peer each.
+# Domains use the reserved .example top-level domain, so they can never clash with real names.
+# EnableNodeOUs: true gives each certificate a role (peer, client, admin, orderer), which lets the
+# endorsement policy say "a PEER of Inst1MSP" rather than "any member of Inst1MSP".
+# SANS: localhost and 127.0.0.1 are added as extra names in every node's TLS certificate, so that admin and
+# benchmark commands run on the laptop can reach nodes through the mapped ports on localhost (TLS checks the
+# name used to connect against the certificate). Fabric's own test network does the same.
+OrdererOrgs:
+  - Name: CentralBank
+    Domain: cb.cbdc.example
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: orderer1
+        SANS: [localhost, 127.0.0.1]
+      - Hostname: orderer2
+        SANS: [localhost, 127.0.0.1]
+      - Hostname: orderer3
+        SANS: [localhost, 127.0.0.1]
+PeerOrgs:
+  - Name: Inst1
+    Domain: inst1.cbdc.example
+    EnableNodeOUs: true
+    Template: { Count: 1, SANS: [localhost, 127.0.0.1] }
+    Users: { Count: 1 }
+  - Name: Inst2
+    Domain: inst2.cbdc.example
+    EnableNodeOUs: true
+    Template: { Count: 1, SANS: [localhost, 127.0.0.1] }
+    Users: { Count: 1 }
+  - Name: Inst3
+    Domain: inst3.cbdc.example
+    EnableNodeOUs: true
+    Template: { Count: 1, SANS: [localhost, 127.0.0.1] }
+    Users: { Count: 1 }
+  - Name: Inst4
+    Domain: inst4.cbdc.example
+    EnableNodeOUs: true
+    Template: { Count: 1, SANS: [localhost, 127.0.0.1] }
+    Users: { Count: 1 }
+  - Name: Inst5
+    Domain: inst5.cbdc.example
+    EnableNodeOUs: true
+    Template: { Count: 1, SANS: [localhost, 127.0.0.1] }
+    Users: { Count: 1 }

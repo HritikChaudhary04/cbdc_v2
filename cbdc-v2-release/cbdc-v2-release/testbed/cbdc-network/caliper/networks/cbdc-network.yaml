@@ -1,0 +1,75 @@
+# Caliper network configuration (v2 format) for the CBDC prototype.
+# Each institution has one client identity (User1) and connects to its OWN peer, which acts as its Fabric Gateway:
+# the gateway collects endorsements from other peers inside the Docker network and submits to the orderers.
+# Paths are relative to this caliper/ folder.
+name: cbdc-network
+version: "2.0.0"
+caliper:
+  blockchain: fabric
+  sutOptions:
+    mutualTls: false
+channels:
+  - channelName: cbdc
+    contracts:
+      - id: wallet
+organizations:
+  - mspid: Inst1MSP
+    identities:
+      certificates:
+        - name: User1
+          clientPrivateKey:
+            path: ../organizations/peerOrganizations/inst1.cbdc.example/users/User1@inst1.cbdc.example/msp/keystore/priv_sk
+          clientSignedCert:
+            path: ../organizations/peerOrganizations/inst1.cbdc.example/users/User1@inst1.cbdc.example/msp/signcerts/User1@inst1.cbdc.example-cert.pem
+    peers:
+      - endpoint: localhost:7051
+        tlsCACerts:
+          path: ../organizations/peerOrganizations/inst1.cbdc.example/peers/peer0.inst1.cbdc.example/tls/ca.crt
+  - mspid: Inst2MSP
+    identities:
+      certificates:
+        - name: User1
+          clientPrivateKey:
+            path: ../organizations/peerOrganizations/inst2.cbdc.example/users/User1@inst2.cbdc.example/msp/keystore/priv_sk
+          clientSignedCert:
+            path: ../organizations/peerOrganizations/inst2.cbdc.example/users/User1@inst2.cbdc.example/msp/signcerts/User1@inst2.cbdc.example-cert.pem
+    peers:
+      - endpoint: localhost:8051
+        tlsCACerts:
+          path: ../organizations/peerOrganizations/inst2.cbdc.example/peers/peer0.inst2.cbdc.example/tls/ca.crt
+  - mspid: Inst3MSP
+    identities:
+      certificates:
+        - name: User1
+          clientPrivateKey:
+            path: ../organizations/peerOrganizations/inst3.cbdc.example/users/User1@inst3.cbdc.example/msp/keystore/priv_sk
+          clientSignedCert:
+            path: ../organizations/peerOrganizations/inst3.cbdc.example/users/User1@inst3.cbdc.example/msp/signcerts/User1@inst3.cbdc.example-cert.pem
+    peers:
+      - endpoint: localhost:9051
+        tlsCACerts:
+          path: ../organizations/peerOrganizations/inst3.cbdc.example/peers/peer0.inst3.cbdc.example/tls/ca.crt
+  - mspid: Inst4MSP
+    identities:
+      certificates:
+        - name: User1
+          clientPrivateKey:
+            path: ../organizations/peerOrganizations/inst4.cbdc.example/users/User1@inst4.cbdc.example/msp/keystore/priv_sk
+          clientSignedCert:
+            path: ../organizations/peerOrganizations/inst4.cbdc.example/users/User1@inst4.cbdc.example/msp/signcerts/User1@inst4.cbdc.example-cert.pem
+    peers:
+      - endpoint: localhost:10051
+        tlsCACerts:
+          path: ../organizations/peerOrganizations/inst4.cbdc.example/peers/peer0.inst4.cbdc.example/tls/ca.crt
+  - mspid: Inst5MSP
+    identities:
+      certificates:
+        - name: User1
+          clientPrivateKey:
+            path: ../organizations/peerOrganizations/inst5.cbdc.example/users/User1@inst5.cbdc.example/msp/keystore/priv_sk
+          clientSignedCert:
+            path: ../organizations/peerOrganizations/inst5.cbdc.example/users/User1@inst5.cbdc.example/msp/signcerts/User1@inst5.cbdc.example-cert.pem
+    peers:
+      - endpoint: localhost:11051
+        tlsCACerts:
+          path: ../organizations/peerOrganizations/inst5.cbdc.example/peers/peer0.inst5.cbdc.example/tls/ca.crt

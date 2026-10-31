@@ -1,0 +1,35 @@
+block load | low-load-param model | per-load-param model | measured (healthy reps only*) | err low / per-load
+A       25 |     995 |     998 (e 2.7 ms, order x0.77, commit x1.18) |   1056 (5/5) | -6% / -6%
+A       50 |     548 |     536 (e 2.5 ms, order x0.72, commit x0.81) |    546 (5/5) | +0% / -2%
+A      100 |     303 |     354 (e 10.7 ms, order x2.20, commit x1.43) |    418 (5/5) | -27% / -15%
+A      150 |     222 |     246 (e 4.5 ms, order x1.27, commit x1.44) |    272 (5/5) | -18% / -10%
+A      200 |     182 |     252 (e 14.0 ms, order x0.92, commit x2.44) |    310 (1/5) | -41% / -19%
+A      250 |     158 |     292 (e 25.7 ms, order x1.57, commit x3.29) |    380 (1/5) | -58% / -23%
+A      300 | no healthy rep
+B10     25 |     214 |     217 (e 2.4 ms, order x1.17, commit x1.00) |    218 (5/5) | -2% / -1%
+B10     50 |     124 |     117 (e 2.5 ms, order x0.67, commit x0.86) |    124 (5/5) | +0% / -6%
+B10    100 |      80 |     102 (e 5.0 ms, order x0.76, commit x2.50) |    128 (5/5) | -38% / -20%
+B100    50 |    1043 |    1044 (e 2.6 ms, order x1.13, commit x0.97) |   1100 (5/5) | -5% / -5%
+B100   150 |     418 |     467 (e 5.9 ms, order x1.30, commit x1.59) |    504 (5/5) | -17% / -7%
+B100   200 |     336 |     431 (e 10.2 ms, order x1.60, commit x2.10) |    472 (5/5) | -29% / -9%
+B500    50 |    1098 |    1103 (e 2.7 ms, order x1.09, commit x1.05) |   1118 (5/5) | -2% / -1%
+B500   150 | no healthy rep
+B500   200 | no healthy rep
+Q1      50 |    1041 |    1022 (e 2.8 ms, order x1.16, commit x0.62) |   1044 (5/5) | -0% / -2%
+Q1     150 |     415 |     422 (e 3.5 ms, order x1.19, commit x1.02) |    446 (5/5) | -7% / -5%
+Q1     200 |     333 |     368 (e 4.8 ms, order x1.44, commit x1.37) |    396 (5/5) | -16% / -7%
+Q2      50 |    1043 |    1025 (e 2.5 ms, order x1.01, commit x0.71) |   1056 (5/5) | -1% / -3%
+Q2     150 |     417 |     441 (e 4.8 ms, order x1.20, commit x1.26) |    476 (5/5) | -12% / -7%
+Q2     200 |     335 |     385 (e 7.0 ms, order x1.35, commit x1.58) |    420 (5/5) | -20% / -8%
+Q4      50 |    1044 |    1059 (e 3.0 ms, order x1.12, commit x1.19) |   1098 (5/5) | -5% / -4%
+Q4     150 |     420 |     479 (e 6.0 ms, order x1.18, commit x1.79) |    512 (5/5) | -18% / -6%
+Q4     200 |     338 |     442 (e 10.4 ms, order x1.52, commit x2.25) |    474 (5/5) | -29% / -7%
+Q5      50 |    1045 |    1076 (e 3.4 ms, order x1.25, commit x1.40) |   1120 (5/5) | -7% / -4%
+Q5     150 |     421 |     513 (e 7.7 ms, order x1.47, commit x2.15) |    546 (5/5) | -23% / -6%
+Q5     200 |     340 |     481 (e 14.9 ms, order x1.53, commit x2.67) |    520 (5/5) | -35% / -8%
+T025    50 |     170 |     182 (e 3.1 ms, order x1.45, commit x1.23) |    204 (5/5) | -16% / -11%
+T025   150 |     179 |     195 (e 4.8 ms, order x0.62, commit x1.64) |    220 (5/5) | -18% / -11%
+T025   200 |     175 |     435 (e 93.8 ms, order x3.35, commit x2.55) |    710 (1/5) | -75% / -39%
+T1      50 |     526 |     530 (e 2.8 ms, order x1.23, commit x0.99) |    562 (5/5) | -6% / -6%
+T1     150 |     222 |     278 (e 8.4 ms, order x2.34, commit x1.63) |    364 (5/5) | -39% / -24%
+T1     200 |     182 |     231 (e 7.3 ms, order x0.91, commit x2.19) |    250 (2/5) | -27% / -8%

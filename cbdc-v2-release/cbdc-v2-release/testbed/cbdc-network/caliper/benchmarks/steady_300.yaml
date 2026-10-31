@@ -1,0 +1,8 @@
+# Step 8c: one long round to see how long the network takes to reach steady state (no warm-up on purpose).
+# 55 TPS is about 70% of the laptop's capacity (about 80 TPS, step 8b).
+test:
+  name: cbdc-steady-300
+  description: One 300 s fixed-rate Transfer round at about 70% of capacity
+  workers: { number: 4 }
+  rounds:
+    - { label: transfer-55tps-300s, txDuration: 300, rateControl: { type: fixed-rate, opts: { tps: 55 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }

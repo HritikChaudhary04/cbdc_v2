@@ -1,0 +1,10 @@
+# Step 8e: quorum curve pilot. Run once per endorsement policy (09_policy.sh Q). 60 s rounds at three loads.
+test:
+  name: cbdc-quorum
+  description: Fixed-rate Transfer at three loads, for one endorsement threshold Q
+  workers: { number: 4 }
+  rounds:
+    - { label: warmup-50tps, txDuration: 30, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-25tps, txDuration: 60, rateControl: { type: fixed-rate, opts: { tps: 25 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-50tps, txDuration: 60, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-100tps, txDuration: 60, rateControl: { type: fixed-rate, opts: { tps: 100 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }

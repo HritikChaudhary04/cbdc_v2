@@ -1,0 +1,11 @@
+test:
+  name: cbdc-knee-2
+  description: Knee retest with a clean page cache
+  workers: { number: 4 }
+  rounds:
+    - { label: warmup-50tps, txDuration: 30, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-150tps, txDuration: 120, rateControl: { type: fixed-rate, opts: { tps: 150 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-175tps, txDuration: 120, rateControl: { type: fixed-rate, opts: { tps: 175 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-200tps, txDuration: 120, rateControl: { type: fixed-rate, opts: { tps: 200 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-225tps, txDuration: 120, rateControl: { type: fixed-rate, opts: { tps: 225 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-250tps, txDuration: 120, rateControl: { type: fixed-rate, opts: { tps: 250 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }

@@ -1,0 +1,15 @@
+order (Raft cut->written leader) a0=14.88 ms  a1=0.0494 ms/tx  n=16001
+   B10   N=10  mean=12.88 ms
+   T025  N=15  mean=22.62 ms
+   A     N=50  mean=12.76 ms
+   B100  N=99  mean=22.38 ms
+   B500  N=101  mean=21.56 ms
+commit (validate+commit at inst1) a0=8.68 ms  a1=0.5447 ms/tx  n=16001
+   B10   N=10  mean=12.83 ms
+   T025  N=15  mean=20.62 ms
+   A     N=50  mean=33.38 ms
+   B100  N=99  mean=60.79 ms
+   B500  N=101  mean=66.65 ms
+A endorse/peer 2.46 ms, gateway Endorse 6.33 ms, Submit 1.07 ms
+B100 endorse/peer 2.65 ms, gateway Endorse 7.19 ms, Submit 1.12 ms
+B10 endorse/peer 2.45 ms, gateway Endorse 6.57 ms, Submit 1.13 ms

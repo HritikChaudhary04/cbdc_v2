@@ -1,0 +1,10 @@
+test:
+  name: cbdc-sweep-knee
+  description: Fine sweep around saturation with disk counters
+  workers: { number: 4 }
+  rounds:
+    - { label: warmup-50tps, txDuration: 30, rateControl: { type: fixed-rate, opts: { tps: 50 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-60tps, txDuration: 120, rateControl: { type: fixed-rate, opts: { tps: 60 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-70tps, txDuration: 120, rateControl: { type: fixed-rate, opts: { tps: 70 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-80tps, txDuration: 120, rateControl: { type: fixed-rate, opts: { tps: 80 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }
+    - { label: transfer-90tps, txDuration: 120, rateControl: { type: fixed-rate, opts: { tps: 90 } }, workload: { module: workload/transfer.js, arguments: { accounts: 10000, distribution: uniform } } }

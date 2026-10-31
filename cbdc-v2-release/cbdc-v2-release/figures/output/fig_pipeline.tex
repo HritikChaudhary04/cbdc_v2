@@ -1,0 +1,19 @@
+\begin{tikzpicture}[
+  stage/.style={draw, rounded corners=2pt, minimum height=11mm, minimum width=27mm, align=center, font=\scriptsize},
+  q/.style={draw, minimum height=5mm, minimum width=7mm, font=\tiny, inner sep=1pt},
+  lbl/.style={font=\tiny, align=center},
+  ar/.style={->, >=stealth, shorten >=1pt}]
+\node[font=\scriptsize, align=center] (cl) {Wallet /\\intermediary};
+\node[stage, right=7mm of cl] (en) {Endorsement\\$c$ peers, policy $q$ of $c$};
+\node[stage, right=6mm of en] (or) {Ordering\\Raft leader, blocks};
+\node[stage, right=6mm of or] (vc) {Validation and\\commit, per block};
+\node[font=\scriptsize, right=5mm of vc] (fin) {Final};
+\draw[ar] (cl) -- node[lbl, above] {$\lambda$} (en);
+\draw[ar] (en) -- (or); \draw[ar] (or) -- (vc); \draw[ar] (vc) -- (fin);
+\node[lbl, below=1.5mm of en] {queue per peer, $\mu_e$\\default: slowest of $q$\\hedged: $q$th of $c$};
+\node[lbl, below=1.5mm of or] {cut at $B$ txns or $\tau$\\one block at a time};
+\node[lbl, below=1.5mm of vc] {policy and version\\checks, then write};
+\node[lbl, above=1.5mm of en] {execute};
+\node[lbl, above=1.5mm of or] {order};
+\node[lbl, above=1.5mm of vc] {validate};
+\end{tikzpicture}
